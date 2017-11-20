@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package tpmon;
+
+service ThroughputRenderer {
+	rpc QueryPosition (QueryPositionRequest) returns (QueryPositionResponse) {}
+	rpc SetPosition (SetPositionRequest) returns (StatusResponse) {}
+}
+
+message QueryPositionRequest {
+}
+
+message QueryPositionResponse {
+	int32 raw_position = 1;
+	int32 max_raw_position = 2;
+}
+
+message SetPositionRequest {
+	int32 raw_position = 1;
+	float pct_position = 2;
+}
+
+message StatusResponse {
+	int32 rcode = 1;
+	string diag_msg = 2;
+}
